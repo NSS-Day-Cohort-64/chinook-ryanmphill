@@ -1,7 +1,4 @@
---Which sales agent made the most in sales in 2009?
-
---HINT: Use the MAX function on a subquery.
-
+--Which sales agent made the most in sales over all?
 
 SELECT SalesRep, MAX(TotalSales) FROM (
     SELECT 
@@ -11,6 +8,5 @@ SELECT SalesRep, MAX(TotalSales) FROM (
     LEFT JOIN CUSTOMER C ON E.EmployeeId = C.SupportRepId
     LEFT JOIN INVOICE I ON C.CustomerId = I.CustomerId
     WHERE E.Title LIKE '%Sales%' AND Title LIKE '%Agent%'
-    AND I.InvoiceDate LIKE '2009%'
     GROUP BY SalesRep
 );
